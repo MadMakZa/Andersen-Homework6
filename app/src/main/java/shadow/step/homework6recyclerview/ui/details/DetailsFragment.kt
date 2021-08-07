@@ -1,6 +1,5 @@
 package shadow.step.homework6recyclerview.ui.details
 
-import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,11 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import shadow.step.homework6recyclerview.MainActivity
 import shadow.step.homework6recyclerview.R
 import shadow.step.homework6recyclerview.data.Note
 import shadow.step.homework6recyclerview.data.NoteList.noteListItems
-import shadow.step.homework6recyclerview.ui.main.MainFragment
 
 class DetailsFragment : Fragment() {
 

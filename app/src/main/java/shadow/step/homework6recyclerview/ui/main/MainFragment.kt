@@ -1,5 +1,6 @@
 package shadow.step.homework6recyclerview.ui.main
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -26,6 +27,7 @@ class MainFragment : Fragment(), NoteAdapter.OnItemClickListener {
     private lateinit var recyclerview: RecyclerView
     private lateinit var viewModel: MainViewModel
     private var items = ArrayList<Note>()
+
 
     override fun onStart() {
         super.onStart()
@@ -61,13 +63,19 @@ class MainFragment : Fragment(), NoteAdapter.OnItemClickListener {
         openDetailsFragment(position)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    override fun onResume() {
+        super.onResume()
+        noteAdapter.notifyDataSetChanged()
+    }
+
     private fun openDetailsFragment(tag: Int) {
         val fragmentDetails = DetailsFragment()
         val bundle = Bundle()
         bundle.putInt(NOTE_EXTRA_KEY, tag)
         fragmentDetails.arguments = bundle
         parentFragmentManager.beginTransaction()
-            .add(R.id.container, fragmentDetails)
+            .replace(R.id.container, fragmentDetails)
             .addToBackStack(null)
             .commit()
     }
